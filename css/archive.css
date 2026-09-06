@@ -7,6 +7,7 @@ img{max-width:100%}
 /* --- 파일 분리에 따른 이미지 처리 --- */
 .shot .im,img.im{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
 img.vt{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;aspect-ratio:auto}
+img.acard-im{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
 .shots.solo img.im{aspect-ratio:16/9;object-position:50% 55%}
 img.pic--photo{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:cover}
 .card.lead img.pic--photo{aspect-ratio:auto;min-height:100%}
