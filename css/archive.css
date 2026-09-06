@@ -1,0 +1,115 @@
+/* --- 기본 리셋 (아티팩트 환경에서 자동 적용되던 부분) --- */
+*,*::before,*::after{box-sizing:border-box}
+html{color-scheme:light dark}
+body{margin:0;font:14px system-ui,-apple-system,sans-serif}
+img{max-width:100%}
+[hidden]{display:none!important}
+/* --- 파일 분리에 따른 이미지 처리 --- */
+.shot .im,img.im{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+img.vt{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;aspect-ratio:auto}
+.shots.solo img.im{aspect-ratio:16/9;object-position:50% 55%}
+img.pic--photo{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:cover}
+.card.lead img.pic--photo{aspect-ratio:auto;min-height:100%}
+img.plate--photo{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.hero .photo{background-image:url("../img/hero.jpg")}
+
+:root{
+    --ground:#F7F4EC; --surface:#FFFFFF; --surface-2:#EFEBE0;
+    --ink:#1B2721; --ink-2:#4C5A53; --ink-3:#7C887F;
+    --line:#E0DACA; --line-2:#C7BFAC;
+    --green:#2F5647; --green-d:#20392E; --green-2:#487964; --green-pale:#E6EEE8;
+    --cinnabar:#BF5028; --ocher:#B08B36; --on-green:#F7F3E8;
+    --f-display:"Gowun Batang","Nanum Myeongjo",serif;
+    --f-body:"IBM Plex Sans KR",system-ui,-apple-system,sans-serif;
+    --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+    --wrap:1180px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0E1411; --surface:#161D19; --surface-2:#1D2621;
+      --ink:#EAE6DA; --ink-2:#B2BCB4; --ink-3:#7D8A81;
+      --line:#28342E; --line-2:#3A4840;
+      --green:#8FBCA6; --green-d:#0B110E; --green-2:#6E9C87; --green-pale:#1B2822;
+      --cinnabar:#E4805A; --ocher:#D6AC5B; --on-green:#EAE6DA;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0E1411; --surface:#161D19; --surface-2:#1D2621;
+    --ink:#EAE6DA; --ink-2:#B2BCB4; --ink-3:#7D8A81;
+    --line:#28342E; --line-2:#3A4840;
+    --green:#8FBCA6; --green-d:#0B110E; --green-2:#6E9C87; --green-pale:#1B2822;
+    --cinnabar:#E4805A; --ocher:#D6AC5B; --on-green:#EAE6DA;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{width:min(100% - 2.5rem,var(--wrap));margin-inline:auto}
+  h1,h2,h3{margin:0;line-height:1.3;text-wrap:balance}
+  h1,h2{font-family:var(--f-display);font-weight:700}
+  p{margin:0}
+  a{color:inherit}
+  img{display:block;width:100%;height:auto}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--cinnabar);outline-offset:3px}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+  /* 머리 */
+  header{background:var(--green-d);color:var(--on-green);position:relative;overflow:hidden}
+  header .lattice{position:absolute;inset:0;opacity:.1;color:var(--on-green)}
+  header .wrap{position:relative;padding-block:2.75rem 3rem}
+  .home{display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;font-size:.85rem;opacity:.82;margin-bottom:1.5rem}
+  .home:hover{opacity:1;text-decoration:underline}
+  .home svg{width:14px;height:14px}
+  header h1{font-size:clamp(1.9rem,4.6vw,2.9rem)}
+  header .sub{margin-top:.9rem;max-width:60ch;font-size:1.02rem;opacity:.85;font-weight:300}
+  .counts{display:flex;gap:1.75rem;margin-top:1.75rem;flex-wrap:wrap}
+  .counts div{display:flex;flex-direction:column}
+  .counts b{font-family:var(--f-display);font-size:1.6rem;line-height:1.1;color:#DCC07C;font-variant-numeric:tabular-nums}
+  :root:not([data-theme="light"]) .counts b{color:var(--ocher)}
+  .counts span{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+
+  /* 묶음 */
+  main{padding-block:clamp(2.5rem,5vw,3.75rem) 4rem}
+  .set{margin-bottom:3.25rem}
+  .set-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;
+    border-bottom:2px solid var(--green);padding-bottom:.6rem;margin-bottom:1.1rem}
+  .set-head h2{font-size:1.25rem}
+  .set-head .when{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.1em;color:var(--cinnabar);font-variant-numeric:tabular-nums}
+  .set-head .when.unknown{color:var(--ink-3);border:1px dashed var(--line-2);padding:.1rem .5rem;border-radius:2px}
+  .set-note{color:var(--ink-2);font-size:.93rem;margin-bottom:1.1rem;max-width:62ch}
+
+  .grid{columns:3;column-gap:1rem}
+  .grid.one{columns:1;max-width:760px}
+  @media (max-width:900px){.grid{columns:2}}
+  @media (max-width:560px){.grid{columns:1}}
+  .shot{break-inside:avoid;margin:0 0 1rem;background:var(--surface);border:1px solid var(--line);
+    cursor:zoom-in;transition:border-color .18s,transform .18s}
+  .shot:hover{border-color:var(--green-2);transform:translateY(-2px)}
+  .shot figcaption{padding:.6rem .8rem .75rem;font-size:.86rem;color:var(--ink-2);display:flex;gap:.55rem;align-items:baseline}
+  .shot figcaption b{font-family:var(--f-mono);font-size:.68rem;color:var(--ocher);flex:none}
+
+  /* 영상 */
+  .films{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.85rem}
+  .film{display:flex;flex-direction:column;gap:.3rem;text-decoration:none;background:var(--surface);
+    border:1px solid var(--line);padding:1rem 1.1rem;transition:border-color .18s,transform .18s}
+  .film:hover{border-color:var(--green-2);transform:translateY(-2px)}
+  .film .meta{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;color:var(--ink-3);display:flex;justify-content:space-between;gap:.5rem}
+  .film strong{font-weight:600;font-size:.95rem;line-height:1.45}
+
+  /* 확대 보기 */
+  #lb{position:fixed;inset:0;z-index:60;background:rgba(12,18,15,.94);display:none;
+    place-items:center;padding:1.5rem}
+  #lb.on{display:grid}
+  #lb img{max-width:min(100%,1100px);max-height:82vh;width:auto;box-shadow:0 20px 60px -20px rgba(0,0,0,.7)}
+  #lb .cap{color:#EAE6DA;text-align:center;margin-top:.9rem;font-size:.9rem}
+  #lb button{position:absolute;background:none;border:1px solid rgba(234,230,218,.4);color:#EAE6DA;
+    width:44px;height:44px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+  #lb button:hover{background:rgba(234,230,218,.14)}
+  #lb .x{top:1.25rem;right:1.25rem}
+  #lb .prev{left:1.25rem;top:50%;transform:translateY(-50%)}
+  #lb .next{right:1.25rem;top:50%;transform:translateY(-50%)}
+  #lb svg{width:18px;height:18px}
+  @media (max-width:560px){#lb .prev{left:.5rem}#lb .next{right:.5rem}}
+
+  footer{border-top:1px solid var(--line-2);background:var(--surface-2);padding-block:2.25rem 2.75rem}
+  footer p{color:var(--ink-3);font-size:.84rem;line-height:1.75;max-width:70ch}
+  footer a{color:var(--green-2)}
